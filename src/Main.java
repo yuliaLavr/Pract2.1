@@ -18,15 +18,11 @@ public class Main {
 
         Booking booking=new Booking(name,surname, dateN, hourS, hourF, peopleN);
 
-        System.out.println("Введіть номер кімнати: ");
-        int num=scanner.nextInt();
         System.out.println("Введіть поверх: ");
         int fl=scanner.nextInt();
         scanner.nextLine();
-        System.out.println("Введіть тип кімнати(одномісний/двомісний/двокімнатний)");
-        String type= scanner.nextLine();
 
-        Room room=new Room(num, fl, type);
+        Room room=new Room(fl);
 
         System.out.println("Ваше бронювання:");
         System.out.println("Ім'я: " + booking.getName());
@@ -37,9 +33,9 @@ public class Main {
         System.out.println("Кількість людей: " + booking.getPeopleN());
         System.out.println("----------------------");
         System.out.println("Інформація про номер:");
-        System.out.println("Номер кімнати: " + room.getNum());
+        System.out.println("Номер вашої кімнати: "+room.number());
         System.out.println("Поверх: " + room.getFl());
-        System.out.println("Тип кімнати: " + room.getType());
+        System.out.println("Тип кімнати: " + room.typeOfRoom(peopleN));
 
         System.out.println("Чи бажаєте щось поїсти?(так/ні)");
         String food= scanner.nextLine();
