@@ -2,17 +2,14 @@ public class Room {
     int num;
     int fl;
     String type;
-
-    public Room(int fl, String type) {
-        this.fl = fl;
-        this.type = type;
-    }
+    int pricement;
 
     public Room() {
     }
 
-    public Room(int fl) {
-        this.fl = fl;
+    int floor(){
+        fl=num/100;
+        return fl;
     }
 
     int  number() {
@@ -27,14 +24,28 @@ public class Room {
         else if (num==2){
             type ="двомісний";
         }
-        else{
+        else if(num>2&num<=4){
             type="двокімнатний";
+        }
+        else{
+            System.out.println("Забагато людей для одного номеру.");
         }
         return type;
     }
-
-    public int getFl() {
-        return fl;
+    int pricementRoom(int num){
+        if (num == 1) {
+            pricement=1200;
+        }
+        else if (num==2){
+            pricement=2200;
+        }
+        else if(num>2&num<=4){
+            pricement=4350;
+        }
+        else{
+            System.out.println("___");
+        }
+        return pricement;
     }
 
 }
