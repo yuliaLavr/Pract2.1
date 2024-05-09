@@ -18,12 +18,8 @@ public class Main {
 
         Booking booking=new Booking(name,surname, dateN, hourS, hourF, peopleN);
 
-        System.out.println("Введіть поверх: ");
-        int fl=scanner.nextInt();
-        scanner.nextLine();
-
-        Room room=new Room(fl);
-
+        Room room=new Room();
+        System.out.println();
         System.out.println("Ваше бронювання:");
         System.out.println("Ім'я: " + booking.getName());
         System.out.println("Прізвище: " + booking.getSurname());
@@ -34,20 +30,14 @@ public class Main {
         System.out.println("----------------------");
         System.out.println("Інформація про номер:");
         System.out.println("Номер вашої кімнати: "+room.number());
-        System.out.println("Поверх: " + room.getFl());
+        System.out.println("Поверх: " + room.floor());
         System.out.println("Тип кімнати: " + room.typeOfRoom(peopleN));
+        System.out.println("Ціна: "+ room.pricementRoom(peopleN)* booking.getDateN());
 
+        scanner.nextLine();
         System.out.println("Чи бажаєте щось поїсти?(так/ні)");
-        String food= scanner.nextLine();
-        if(food.equalsIgnoreCase("так")){
-            Food f=new Food();
-            f.pMenu();
-            System.out.println("Введіть назву страви, яку ви бажаєте: ");
-            String order=scanner.nextLine();
-            System.out.println("Ваше замовлення: ");
-            System.out.println("Назва страви: "+order);
-            System.out.println("Ціна: "+f.getPrice(order));
-        }
+        Food f=new Food(booking.getHourS());
+        f.pMenu();
 
     }
 }
