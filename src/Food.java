@@ -15,13 +15,13 @@ public class Food {
         int h = Integer.parseInt(part[0]);
         int m = Integer.parseInt(part[1]);
 
-        if (h >= 7 && h <= 10 && m >= 30 && m <= 20) {
+        if (h >= 7 && h <= 10 && m >= 10 && m <= 30) {
             mealType = "Сніданок";
         }
         else if (h >= 13 && h <= 15 && m >= 15 && m <= 30) {
             mealType = "Обід";
         }
-        else if (h >= 17 && h <= 20 && m >= 45 && m <= 30) {
+        else if (h >= 17 && h <= 20 && m >= 30 && m <= 45) {
             mealType = "Вечеря";
         } else {
             mealType = "Меню наразі недоступне." +
@@ -31,6 +31,7 @@ public class Food {
         }
         //Вивід меню
         System.out.println("Тип прийому їжі: " + mealType);
+        System.out.println("Меню: ");
         if (mealType.equals("Сніданок")) {
             for (int i = 0; i < breakfast.length; i++) {
                 System.out.println(breakfast[i] + "-" + priceBr[i] + "грн");
@@ -49,6 +50,33 @@ public class Food {
                     "                    Обід: з 13:15-15:30 \n" +
                     "                    Вечеря: з 17:45-20:10");
         }
+    }
+    public int gerPrice(String food1){
+        for (int i = 0; i < breakfast.length; i++) {
+            if(food1.equals(breakfast[i])){
+                return priceBr[i];
+            }
+        }
+        for (int i = 0; i < lunch.length; i++) {
+            if(food1.equalsIgnoreCase(lunch[i])){
+                return priceLun[i];
+            }
+        }
+        for (int i = 0; i < dinner.length ; i++) {
+            if(food1.equalsIgnoreCase(dinner[i])){
+                return priceDin[i];
+            }
+        }
+        return 0;
+    }
+    public String[] getBreakfast() {
+        return breakfast;
+    }
+    public String[] getLunch() {
+        return lunch;
+    }
+    public String[] getDinner() {
+        return dinner;
     }
 }
 
