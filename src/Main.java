@@ -35,9 +35,18 @@ public class Main {
         System.out.println("Ціна: "+ room.pricementRoom(peopleN)* booking.getDateN());
 
         scanner.nextLine();
-        System.out.println("Чи бажаєте щось поїсти?(так/ні)");
         Food f=new Food(booking.getHourS());
-        f.pMenu();
+        System.out.println("Чи бажаєте щось поїсти?(так/ні)");
+        String food=scanner.nextLine();
+        if(food.equalsIgnoreCase("так")){
+            f.pMenu();
+            System.out.println("Введіть те, що ви хочете замовити");
+            String order=scanner.nextLine();
+            System.out.println("Ваше замовлення: ");
+            System.out.println("Назва: "+order);
+            System.out.println("Ціна за замовлення: "+f.gerPrice(order));
+            System.out.println("Чи хочете замовити ще щось?");
+        }
 
     }
 }
