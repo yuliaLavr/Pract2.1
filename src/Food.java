@@ -1,12 +1,16 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Food {
     String mealType;
-    private String[] breakfast={"Круасан","Вафлі","Кава","Чай","Макарони"};
-    private String[] lunch={"Піца","Бургер","Картопля по-селянськи","Салат","Кампот"};
-    private String[] dinner={"Суп","Чай","Десерт","Мясо з гарніром","Желе"};
-    private int[] priceBr={125,150,75,55,100};
-    private int[] priceLun={135,150,145,55,60};
-    private int[] priceDin={101,55,165,155,110};
-    private String hourS;
+    private final List<String> orders=new ArrayList<>();
+    private final String[] breakfast={"Круасан","Вафлі","Кава","Чай","Макарони"};
+    private final String[] lunch={"Піца","Бургер","Картопля по-селянськи","Салат","Кампот"};
+    private final String[] dinner={"Суп","Чай","Десерт","Мясо з гарніром","Желе"};
+    private final int[] priceBr={125,150,75,55,100};
+    private final int[] priceLun={135,150,145,55,60};
+    private final int[] priceDin={101,55,165,155,110};
+    private final String hourS;
     public Food(String hourS){
         this.hourS=hourS;
     }
@@ -14,14 +18,15 @@ public class Food {
         String[] part = hourS.split(":");
         int h = Integer.parseInt(part[0]);
         int m = Integer.parseInt(part[1]);
+        int hvul=h*60+m;
 
-        if (h >= 7 && h <= 10 && m >= 10 && m <= 30) {
+        if (hvul>=450&&hvul<=620) {
             mealType = "Сніданок";
         }
-        else if (h >= 13 && h <= 15 && m >= 15 && m <= 30) {
+        else if (hvul>=795&&hvul<=930) {
             mealType = "Обід";
         }
-        else if (h >= 17 && h <= 20 && m >= 30 && m <= 45) {
+        else if (hvul>=1065&&hvul<=1210) {
             mealType = "Вечеря";
         } else {
             mealType = "Меню наразі недоступне." +
@@ -69,14 +74,23 @@ public class Food {
         }
         return 0;
     }
-    public String[] getBreakfast() {
-        return breakfast;
+    public void addOrder(String order1){
+        orders.add(order1);
     }
-    public String[] getLunch() {
-        return lunch;
+    public List<String>getOrders(){
+        return orders;
     }
-    public String[] getDinner() {
-        return dinner;
+    public int getTotalPrice(){
+        int totalPrice=0;
+        for(String order1:orders){
+            totalPrice+=getPrice(order1);
+        }
+        return totalPrice;
     }
+
+    private int getPrice(String order1) {
+        return 0;
+    }
+
 }
 
