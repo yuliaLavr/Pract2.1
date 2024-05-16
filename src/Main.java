@@ -36,17 +36,23 @@ public class Main {
 
         scanner.nextLine();
         Food f=new Food(booking.getHourS());
-        System.out.println("Чи бажаєте щось поїсти?(так/ні)");
-        String food=scanner.nextLine();
-        if(food.equalsIgnoreCase("так")){
-            f.pMenu();
-            System.out.println("Введіть те, що ви хочете замовити");
-            String order=scanner.nextLine();
+        boolean order=true;
+        while(order){
+            System.out.println("Чи бажаєте щось поїсти?(так/ні)");
+            String food=scanner.nextLine();
+            if (food.equalsIgnoreCase("так")){
+                f.pMenu();
+                System.out.println("Введіть те, що ви хочете замовити");
+                String foodOrder=scanner.nextLine();
+                f.addOrder(foodOrder);
+            }else{
+                order=false;
+            }
             System.out.println("Ваше замовлення: ");
-            System.out.println("Назва: "+order);
-            System.out.println("Ціна за замовлення: "+f.gerPrice(order));
-            System.out.println("Чи хочете замовити ще щось?");
+            for(String order1:f.getOrders()){
+                System.out.println(order1+"-"+f.gerPrice(order1)+" грн");
+            }
+            System.out.println("Загальна ціна: "+f.getTotalPrice()+" грн");
         }
-
     }
 }
