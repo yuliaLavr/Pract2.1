@@ -52,7 +52,7 @@ public class Main {
             for(String order1:f.getOrders()){
                 System.out.println(order1+"-"+f.gerPrice(order1)+" грн");
             }
-            System.out.println("Загальна ціна: "+f.getTotalPrice()+" грн");
         }
+        System.out.println("Загальна ціна: "+f.getTotalPrice()+" грн");
     }
 }
